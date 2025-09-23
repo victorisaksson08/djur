@@ -1,10 +1,113 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="sv">
 <head>
-    <title>Pingvin</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pingviner — Fascinerande fåglar</title>
+  <meta name="description" content="En unik en-sidig webbplats om pingviner. Inkluderar fakta och roliga inslag." />
+  <style>
+    :root{
+      --bg:#fff5f0;
+      --card:#fff6f2;
+      --text:#2b1b17;
+      --accent:#ff6b6b;
+      --muted:#8a5a54;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; background:var(--bg); color:var(--text)}
+
+    header{display:flex;align-items:center;justify-content:space-between;padding:1rem 1.25rem}
+    .brand{display:flex;gap:.75rem;align-items:center}
+    .logo{width:50px;height:50px;border-radius:50%;background:linear-gradient(135deg,var(--accent),#f08080);display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:1.2rem;box-shadow:0 3px 10px rgba(0,0,0,0.2)}
+    h1{font-size:1.4rem;margin:0}
+    p.lead{margin:0;color:var(--muted);font-style:italic}
+
+    main{max-width:1000px;margin:1rem auto;padding:1rem}
+    .hero{display:grid;grid-template-columns:1fr;gap:1rem}
+    .card{background:var(--card);padding:1.25rem;border-radius:14px;box-shadow:0 6px 20px rgba(2,16,32,0.06);transition:transform .2s}
+    .card:hover{transform:translateY(-2px)}
+
+    .facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:12px}
+    .fact{padding:.75rem;border-radius:10px;background:linear-gradient(180deg,rgba(255,255,255,.7),rgba(255,255,255,.4));border:1px solid rgba(0,0,0,.05)}
+
+    .funfact{margin:2rem 0;text-align:center}
+    .funfact p{font-size:1.1rem;color:var(--text);background:var(--card);display:inline-block;padding:1rem 1.5rem;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.1)}
+
+    .quote{margin:2rem auto;padding:1.5rem;text-align:center;font-style:italic;color:var(--muted);border-left:4px solid var(--accent);max-width:600px;background:rgba(255,255,255,.5);border-radius:8px}
+
+    .bottom-image{margin:2rem auto;max-width:1000px}
+    .bottom-image img{width:100%;border-radius:12px;box-shadow:0 6px 20px rgba(0,0,0,0.15)}
+
+    footer{max-width:1000px;margin:2rem auto;padding:1rem;color:var(--muted);font-size:.9rem;text-align:center}
+  </style>
 </head>
-<body style="background-color: rgb(255, 255, 255);">
-    <h1>Pingvin</h1>
-    <p style="font-size: 25px;">Pingvinen är en fågel art som inte kan flyga, utan rör sig med hjälp av att glida på deras mage eller att gå</p>
+<body>
+  <header>
+    <div class="brand">
+      <div class="logo">🐧</div>
+      <div>
+        <h1>Pingviner</h1>
+        <p class="lead">Nyfiken inblick i pingvinernas fascinerande värld</p>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="card">
+        <h2>Vad är en pingvin?</h2>
+        <p>Pingviner är fåglar anpassade till hav och kyla. Trots att de inte kan flyga, är de mästare i vattnet och kan simma med en otrolig smidighet. De finns i kolonier från Antarktis till Sydamerika, Australien och Afrika.</p>
+
+        <div class="facts">
+          <div class="fact">
+            <strong>Dykförmåga</strong>
+            <p class="muted">Kejsarpingvinen kan dyka i mer än 20 minuter och nå över 500 meters djup.</p>
+          </div>
+          <div class="fact">
+            <strong>Kolonier</strong>
+            <p class="muted">Vissa kolonier består av hundratusentals individer som lever tätt tillsammans.</p>
+          </div>
+          <div class="fact">
+            <strong>Unika arter</strong>
+            <p class="muted">Det finns 18 olika arter, från små dvärgpingviner till stora kejsarpingviner.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="funfact">
+      <h2>Rolig fakta</h2>
+      <p id="factbox">Laddar fakta om pingviner...</p>
+    </section>
+
+    <section class="quote">
+      <p>"Pingviner påminner oss om att även de som inte kan flyga kan erövra världen på sitt eget sätt."</p>
+    </section>
+
+    <div class="bottom-image">
+      <img src="images/Pingu.jpg" alt="Pingu">
+    </div>
+  </main>
+
+  <footer>
+    <p>Byggd med 💙 för natur och djurliv. Upptäck pingvinernas värld.</p>
+  </footer>
+
+  <script>
+    const facts = [
+      "Pingviner använder sina fenor som paddlar när de simmar.",
+      "Kejsarpingvinen är över 1 meter lång – den största arten.",
+      "Dvärgpingvinen är bara runt 30 cm hög.",
+      "Pingviner parar sig ofta för livet med samma partner.",
+      "Deras svartvita färger fungerar som kamouflage i vattnet."
+    ];
+    const factbox = document.getElementById("factbox");
+    function randomFact(){
+      factbox.textContent = facts[Math.floor(Math.random()*facts.length)];
+    }
+    randomFact();
+    setInterval(randomFact, 6000);
+  </script>
 </body>
 </html>
